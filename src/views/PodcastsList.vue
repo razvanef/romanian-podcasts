@@ -75,14 +75,13 @@
 
 <script>
 export default {
-    name: "PodcastsList",
+    name: 'PodcastsList',
     data: () => ({
-        title: "Podcast-uri romanesti",
+        title: 'Podcast-uri romanesti',
         loading: false,
         podcasts: [],
-        searchPodcast: "",
+        searchPodcast: '',
         selectCategories: [],
-        // awaitingSearch: false,
         categories: [
             'Society & Culture',
             'Entertainment',
@@ -119,36 +118,7 @@ export default {
             this.podcasts = json.records;
             this.loading = false;
         });
-    },
-    // watch: {
-    //     searchPodcast: {
-    //         handler: function() {
-    //             if (!this.awaitingSearch) {
-    //                 setTimeout(() => {
-    //                     this.search(this.searchPodcast)
-    //                     this.awaitingSearch = false;
-    //                 }, 1000); // 1 sec delay
-    //                 this.awaitingSearch = true;
-    //             }
-    //         }
-    //     }
-    // },
-    methods: {
-        // search(value) {
-        //     const filter = this.searchPodcast ? `&filterByFormula=OR(SEARCH(LOWER('${value}')%2CLOWER(%7Bname%7D)),OR(SEARCH(LOWER('${value}')%2CLOWER(%7Bhost%7D)),OR(SEARCH(LOWER('${value}')%2CLOWER(%7Bdescription%7D)))))` : ''
-        //     fetch(
-        //         `https://api.airtable.com/v0/appat34KlYh94IXEb/Podcasts?view=Grid%20view&fields%5B%5D=podcastId&fields%5B%5D=name&fields%5B%5D=host&fields%5B%5D=cover${filter}`,
-        //         {
-        //             headers: { Authorization: `Bearer ${process.env.VUE_APP_AIRTABLE_API_KEY}` }
-        //         }
-        //     )
-        //     .then(res => res.json())
-        //     .then(json => {
-        //         this.podcasts = json.records;
-        //         this.loading = false;
-        //     });
-        // },
-    },
+    }, 
     computed: {
         filterPodcasts() {
             const search = this.searchPodcast ? this.searchPodcast.normalize('NFD').replace(/[\u0300-\u036f]/g, "") : '';
@@ -165,53 +135,53 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card-col {
-    display: flex;
-    flex-direction: column;
-
-    .v-skeleton-loader {
-        flex: 1;
+    .card-col {
         display: flex;
         flex-direction: column;
 
-        .v-card {
-        flex: 1;
+        .v-skeleton-loader {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
 
-        &:hover {
-            box-shadow: 0px 10px 14px -6px rgba(0, 0, 0, 0.2),
-            0px 22px 35px 3px rgba(0, 0, 0, 0.14),
-            0px 8px 42px 7px rgba(0, 0, 0, 0.12) !important;
+            .v-card {
+            flex: 1;
+
+            &:hover {
+                box-shadow: 0px 10px 14px -6px rgba(0, 0, 0, 0.2),
+                0px 22px 35px 3px rgba(0, 0, 0, 0.14),
+                0px 8px 42px 7px rgba(0, 0, 0, 0.12) !important;
+            }
+
+            .v-image {
+                width: 100%;
+                padding-bottom: 100%;
+                height: 0;
+            }
+            }
         }
 
-        .v-image {
-            width: 100%;
-            padding-bottom: 100%;
-            height: 0;
+        .card-container {
+            padding: 16px;
         }
+
+        .v-card__title,
+        .v-card__subtitle {
+            word-break: break-word;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 0;
+        }
+        .v-card__title {
+            max-height: 96px;
+            -webkit-line-clamp: 2;
+            margin-bottom: 16px;
+        }
+        .v-card__subtitle {
+            max-height: 38px;
+            -webkit-line-clamp: 1;
         }
     }
-
-    .card-container {
-        padding: 16px;
-    }
-
-    .v-card__title,
-    .v-card__subtitle {
-        word-break: break-word;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        padding: 0;
-    }
-    .v-card__title {
-        max-height: 96px;
-        -webkit-line-clamp: 2;
-        margin-bottom: 16px;
-    }
-    .v-card__subtitle {
-        max-height: 38px;
-        -webkit-line-clamp: 1;
-    }
-}
 </style>

@@ -63,7 +63,6 @@
         this.loading = true;
 
         fetch(
-        // `https://api.airtable.com/v0/appat34KlYh94IXEb/Podcasts/${this.podcastId}`,
             `https://api.airtable.com/v0/appat34KlYh94IXEb/Podcasts?maxRecords=1&view=Grid%20view&filterByFormula=podcastId='${this.podcastId}'`,
         {
             headers: { Authorization: `Bearer ${process.env.VUE_APP_AIRTABLE_API_KEY}` }
@@ -71,7 +70,6 @@
         )
         .then(res => res.json())
         .then(json => {
-            // this.podcast = json.fields;
             this.podcast = json.records[0].fields;
             this.loading = false;
         });
