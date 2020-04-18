@@ -19,12 +19,12 @@ export default new Router({
                 component: PodcastDetails,
                 props: true
             },
-            {
-                name: 'addPodcast',
-                path: '/add',
-                component: addPodcast
-            }
         ]
         },
+        {
+            name: 'addPodcast',
+            path: '/add',
+            component: addPodcast
+        }
     ]
 })
