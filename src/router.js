@@ -25,7 +25,7 @@ export default new Router({
             component: addPodcast
         }, {
             path: '*',
-            component: PodcastsList,
+            redirect: '/'
         }
     ]
 })
