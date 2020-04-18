@@ -2,6 +2,7 @@
     <v-row justify="center">
     <v-dialog v-model="addPodcastDialog" persistent max-width="600px">
       <v-card>
+        <v-btn class="close-icon" icon light @click="cancel()">
         <v-card-title>
           <span class="headline">Adauga Podcast</span>
         </v-card-title>
@@ -42,7 +43,6 @@
           </v-container>
         </v-card-text>
         <v-card-actions>
-          <v-spacer></v-spacer>
           <v-btn color="blue darken-1" text @click="cancel()">Renunta</v-btn>
           <v-btn color="blue darken-1" text @click="addPodcast(podcast)">Adauga</v-btn>
         </v-card-actions>
@@ -66,7 +66,7 @@ export default {
             .then(data => {
                 console.log(data)
                 const name = data.getElementsByTagName("title")[0].childNodes[0].nodeValue;
-                const podcastId = name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(" ", "-")
+                const podcastId = name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z ]/g, '').replace(/^\s+/g, '').split(' ').join('-')
                 const description = data.getElementsByTagName("description")[0].childNodes[0].nodeValue;
                 const website = data.getElementsByTagName("link")[0].childNodes[0].nodeValue;
                 const host = data.getElementsByTagName("author")[0] ? data.getElementsByTagName("author")[0].childNodes[0].nodeValue : data.getElementsByTagName("itunes:author")[0].childNodes[0].nodeValue;
@@ -83,7 +83,7 @@ export default {
                     breaker: podcast.breaker || '',
                     castro: podcast.castro || '',
                 }
-                const podcastObj = { podcastId, name, description, website, host, cover, categories, ...social }
+                const podcastObj = { podcastId, name, description, website, rss: podcast.rss, host, cover, categories, ...social }
                 const params = {
                     records: [{
                         fields: podcastObj

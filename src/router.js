@@ -23,9 +23,6 @@ export default new Router({
             name: 'addPodcast',
             path: '/add',
             component: addPodcast
-        }, {
-            path: '*',
-            redirect: '/'
         }
     ]
 })
