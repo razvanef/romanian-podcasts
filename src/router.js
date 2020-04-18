@@ -8,8 +8,7 @@ Vue.use(Router)
 
 export default new Router({
     mode: 'history',
-    routes: [
-        {
+    routes: [{
         path: '/',
         component: PodcastsList,
         children: [
@@ -20,11 +19,13 @@ export default new Router({
                 props: true
             },
         ]
-        },
-        {
-            // name: 'addPodcast',
+        }, {
+            name: 'addPodcast',
             path: '/add',
             component: addPodcast
+        }, {
+            path: '*',
+            component: PodcastsList,
         }
     ]
 })
