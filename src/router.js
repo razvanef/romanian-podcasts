@@ -22,7 +22,7 @@ export default new Router({
         ]
         },
         {
-            name: 'addPodcast',
+            // name: 'addPodcast',
             path: '/add',
             component: addPodcast
         }
