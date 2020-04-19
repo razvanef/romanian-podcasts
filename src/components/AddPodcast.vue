@@ -73,7 +73,7 @@ export default {
                 const website = data.getElementsByTagName("link")[0].childNodes[0].nodeValue;
                 const host = data.getElementsByTagName("author")[0] ? data.getElementsByTagName("author")[0].childNodes[0].nodeValue : data.getElementsByTagName("itunes:author")[0].childNodes[0].nodeValue;
                 const cover = data.getElementsByTagName("image")[0].getElementsByTagName("url")[0].childNodes[0].nodeValue;
-                const categories = Array.from(data.getElementsByTagName("itunes:category")).filter(c => c !== '').map(category => category.getAttribute('text'));
+                const categories = Array.from(data.getElementsByTagName("itunes:category")).map(category => category.getAttribute('text')).filter(c => c !== '');
                 // const episodes = data.getElementsByTagName("item").length;
                 const social = {
                     youtube: podcast.youtube || '',
