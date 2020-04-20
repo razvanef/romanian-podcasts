@@ -105,19 +105,7 @@ export default {
         ],
     }),
     created() {
-        this.loading = true
-        const fields = '&fields%5B%5D=podcastId&fields%5B%5D=name&fields%5B%5D=host&fields%5B%5D=cover&fields%5B%5D=description&fields%5B%5D=categories'
-        fetch(
-            `https://api.airtable.com/v0/appat34KlYh94IXEb/Podcasts?view=Grid%20view${fields}`,
-            {
-                headers: { Authorization: `Bearer ${process.env.VUE_APP_AIRTABLE_API_KEY}` }
-            }
-        )
-        .then(res => res.json())
-        .then(json => {
-            this.podcasts = json.records;
-            this.loading = false;
-        });
+        this.listPodcasts()
     }, 
     computed: {
         filterPodcasts() {
@@ -129,6 +117,24 @@ export default {
                     || podcast.fields.host.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(search.toLowerCase()))
                     && !!(this.selectCategories.length > 0 ? podcast.fields.categories.filter(value => this.selectCategories.includes(value)).length > 0 : true)
             })
+        }
+    },
+    methods: {
+        listPodcasts(offset = '') {
+            this.loading = true
+            const fields = '&fields%5B%5D=podcastId&fields%5B%5D=name&fields%5B%5D=host&fields%5B%5D=cover&fields%5B%5D=description&fields%5B%5D=categories'
+            fetch(
+                `https://api.airtable.com/v0/appat34KlYh94IXEb/Podcasts?view=Grid%20view&offset=${offset}${fields}`,
+                {
+                    headers: { Authorization: `Bearer ${process.env.VUE_APP_AIRTABLE_API_KEY}` }
+                }
+            )
+            .then(res => res.json())
+            .then(json => {
+                this.podcasts = [...this.podcasts, ...json.records];
+                this.loading = false;
+                if (json.offset) this.listPodcasts(json.offset)
+            });
         }
     }
 };
