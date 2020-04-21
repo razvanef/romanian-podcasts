@@ -136,6 +136,7 @@ export default {
 
             .v-card {
             flex: 1;
+            cursor: pointer;
 
             &:hover {
                 box-shadow: 0px 10px 14px -6px rgba(0, 0, 0, 0.2),
