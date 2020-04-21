@@ -13,22 +13,24 @@
             <v-col cols="12"
                 xs="12"
                 sm="6"
-                md="4"
-                lg="3">
-                <v-select
-                v-model="selectCategories"
-                :items="categories"
-                label="Categorii"
-                multiple
+                md="4">
+                <v-autocomplete
+                    v-model="selectCategories"
+                    :items="categories"
+                    chips
+                    small-chips
+                    label="Categorii"
+                    multiple
                 >
                     <template v-slot:selection="{ item, index }">
-                        <span v-if="index === 0">{{ item }}</span>
+                        <span v-if="index === 0">{{ item.text }}</span>
+                        <span v-if="index === 1">, {{ item.text }}</span>
                         <span
-                        v-if="index === 1"
+                        v-if="index > 1"
                         class="grey--text caption"
-                        > (+{{ selectCategories.length - 1 }} others)</span>
+                        > (+{{ selectCategories.length - 2 }} others)</span>
                     </template>
-                </v-select>
+                </v-autocomplete>
             </v-col>
             <v-col cols="12"
                 xs="12"
@@ -74,6 +76,8 @@
 </template>
 
 <script>
+import categoriesList from '../assets/categories.js'
+
 export default {
     name: 'PodcastsList',
     data: () => ({
@@ -82,27 +86,7 @@ export default {
         podcasts: [],
         searchPodcast: '',
         selectCategories: [],
-        categories: [
-            'Society & Culture',
-            'Entertainment',
-            'Technology',
-            'Comedy',
-            'Education',
-            'Business',
-            'Health & Fitness',
-            'News',
-            'Self-Improvement',
-            'Marketing',
-            'History',
-            'Kids & Family',
-            'Arts',
-            'Places & Travel',
-            'Sport',
-            'Fashion & Beauty',
-            'Religion & Spirituality',
-            'Science',
-            'Leisure',
-        ],
+        categories: categoriesList,
     }),
     created() {
         this.listPodcasts()
