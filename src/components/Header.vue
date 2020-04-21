@@ -1,5 +1,6 @@
 <template>
     <v-app-bar app light color="white">
+        <router-link tag="a" to="/">
             <div class="d-flex align-center">
                 <v-img
                 alt="Podcasturi Romanesti"
@@ -10,13 +11,14 @@
                 width="180"
                 />
             </div>
+        </router-link>
 
-            <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
 
-            <v-btn href="mailto:razvanef@gmail.com?subject=Podcasturi Romanesti" target="_blank" text>
-                <span class="mr-2">Ai o sugestie?</span>
-                <v-icon>mdi-email-outline</v-icon>
-            </v-btn>
+        <v-btn href="mailto:razvanef@gmail.com?subject=Podcasturi Romanesti" target="_blank" text>
+            <span class="mr-2">Ai o sugestie?</span>
+            <v-icon>mdi-email-outline</v-icon>
+        </v-btn>
     </v-app-bar>
 </template>
 
