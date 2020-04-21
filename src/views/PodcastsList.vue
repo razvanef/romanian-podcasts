@@ -1,19 +1,18 @@
 <template>
     <v-container fluid>
         <v-row class="px-3 flex-right">
+            <!-- <v-col cols="12"
+                xs="12"
+                lg="3"
+                class="center-flex-vertically">
+                <h3>{{podcasts.length}} podcasturi</h3>
+            </v-col> -->
+            <!-- <div class="spacer"></div> -->
             <v-col cols="12"
                 xs="12"
                 sm="6"
                 md="4"
-                lg="3"
-                class="center-flex-vertically">
-                <h3>{{podcasts.length}} podcasturi</h3>
-            </v-col>
-            <div class="spacer"></div>
-            <v-col cols="12"
-                xs="12"
-                sm="6"
-                md="4">
+                lg="3">
                 <v-autocomplete
                     v-model="selectCategories"
                     :items="categories"
@@ -25,11 +24,10 @@
                 >
                     <template v-slot:selection="{ item, index }">
                         <span v-if="index === 0">{{ item.text }}</span>
-                        <span v-if="index === 1">, {{ item.text }}</span>
                         <span
-                        v-if="index > 1"
+                        v-if="index === 1"
                         class="grey--text caption"
-                        > (+{{ selectCategories.length - 2 }} others)</span>
+                        > (+{{ selectCategories.length - 1 }} others)</span>
                     </template>
                 </v-autocomplete>
             </v-col>
