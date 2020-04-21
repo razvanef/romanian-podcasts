@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="podcasts-app">
     <Header />
     <v-content>
         <router-view />
@@ -24,6 +24,9 @@ export default {
 </script>
 
 <style lang="scss">
+    .podcasts-app.v-application .primary--text {
+      color: #08415C !important;
+    }
     .container, .v-toolbar__content {
         max-width: 1200px;
         width: 100%;

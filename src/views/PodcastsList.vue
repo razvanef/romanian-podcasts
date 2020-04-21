@@ -21,6 +21,7 @@
                     small-chips
                     label="Categorii"
                     multiple
+                    clearable
                 >
                     <template v-slot:selection="{ item, index }">
                         <span v-if="index === 0">{{ item.text }}</span>
