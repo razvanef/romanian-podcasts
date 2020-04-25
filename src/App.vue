@@ -24,6 +24,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
+
 .podcasts-app.v-application .primary--text {
   color: #08415c !important;
 }
