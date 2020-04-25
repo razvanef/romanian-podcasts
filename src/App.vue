@@ -3,18 +3,21 @@
     <Header />
     <v-content>
       <router-view />
+      <CookiesConsent />
     </v-content>
   </v-app>
 </template>
 
 <script>
 import Header from "./components/Header";
+import CookiesConsent from "./components/CookiesConsent";
 
 export default {
   name: "App",
 
   components: {
-    Header
+    Header,
+    CookiesConsent
   },
 
   data: () => ({
@@ -24,8 +27,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
-
 .podcasts-app.v-application .primary--text {
   color: #08415c !important;
 }
