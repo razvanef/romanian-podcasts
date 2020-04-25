@@ -4,7 +4,7 @@
             <v-skeleton-loader :loading="loading" type="card">
                 <v-card class="details-card mx-auto" v-if="podcast">
                     <v-btn class="close-icon" icon light @click="$router.push('/')">
-                    <v-icon>mdi-close</v-icon>
+                    <v-icon>fa-times-circle</v-icon>
                     </v-btn>
                     <v-img height="250" v-if="podcast" :src="podcast.cover"></v-img>
                     <v-card-title>{{ podcast.name }}</v-card-title>

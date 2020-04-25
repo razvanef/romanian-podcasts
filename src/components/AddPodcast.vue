@@ -3,7 +3,7 @@
     <v-dialog v-model="addPodcastDialog" persistent max-width="600px">
       <v-card>
         <v-btn class="close-icon" icon light @click="cancel()">
-          <v-icon>mdi-close</v-icon>
+          <v-icon>fa-times-circle</v-icon>
         </v-btn>
         <v-card-title>
           <span class="headline">Adauga Podcast</span>
