@@ -3,6 +3,7 @@ import App from "./App.vue";
 import vuetify from "./plugins/vuetify";
 import router from "./router";
 import VueAnalytics from "vue-analytics";
+import VueMeta from "vue-meta";
 
 Vue.config.productionTip = false;
 
@@ -10,6 +11,10 @@ Vue.config.productionTip = false;
 Vue.use(VueAnalytics, {
   id: process.env.VUE_APP_ANALYTICS_KEY
 });
+
+Vue.use(VueMeta, {
+  // optional pluginOptions
+})
 
 new Vue({
   vuetify,

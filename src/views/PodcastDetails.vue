@@ -76,6 +76,17 @@ export default {
         this.podcast = json.records[0].fields;
         this.loading = false;
       });
+  },
+  metaInfo() {
+    return {
+      title: this.podcast.name,
+      meta: [
+        { name: 'description', content: this.podcast.description},
+        { property: 'og:title', content: this.podcast.name},
+        { property: 'og:site_name', content: "Podcasturi Romanesti"},
+        { property: 'og:type', content: 'website'}
+      ]
+    };
   }
 };
 </script>
