@@ -20,6 +20,13 @@ export default {
     CookiesConsent
   },
 
+  metaInfo: {
+    // if no subcomponents specify a metaInfo.title, this title will be used
+    title: 'Podcasturi Romanesti',
+    // all titles will be injected into this template
+    titleTemplate: '%s | Podcasturi Romanesti'
+  },
+
   data: () => ({
     //
   })
