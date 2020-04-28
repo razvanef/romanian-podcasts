@@ -24,7 +24,10 @@ export default {
     // if no subcomponents specify a metaInfo.title, this title will be used
     title: 'Podcasturi Romanesti',
     // all titles will be injected into this template
-    titleTemplate: '%s | Podcasturi Romanesti'
+    titleTemplate: '%s | Podcasturi Romanesti',
+    meta: [
+        { name: 'description', content: "Ce podcasturi mai asculti? Am adunat o colectie cu cele mai populare podcasturi romanesti sa ai de unde alege." }
+    ]
   },
 
   data: () => ({
