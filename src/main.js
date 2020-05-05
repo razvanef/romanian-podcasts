@@ -9,7 +9,8 @@ Vue.config.productionTip = false;
 
 // Configuration VueAnalytics
 Vue.use(VueAnalytics, {
-  id: process.env.VUE_APP_ANALYTICS_KEY
+  id: process.env.VUE_APP_ANALYTICS_KEY,
+  router
 });
 
 Vue.use(VueMeta, {

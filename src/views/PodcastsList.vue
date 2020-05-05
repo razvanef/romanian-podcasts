@@ -136,8 +136,12 @@ export default {
           this.loading = false;
           if (json.offset) this.listPodcasts(json.offset);
         });
+    },
+    
+    track () {
+      this.$ga.page('/')
     }
-  }
+  },
 };
 </script>
 
