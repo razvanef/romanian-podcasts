@@ -87,7 +87,13 @@ export default {
         { property: 'og:type', content: 'website'}
       ]
     };
-  }
+  },
+
+  methods: {
+    track () {
+      this.$ga.page(`/${this.podcast.id}`)
+    }
+  },
 };
 </script>
 
