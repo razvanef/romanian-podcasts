@@ -3,7 +3,7 @@
     <a
       v-if="podcast.website"
       class="mx-3"
-      :href="podcast.website"
+      :href="`${podcast.website}?ref=${domainName}`"
       target="_blank"
       title="Website"
     >
@@ -146,7 +146,10 @@
 <script>
 export default {
   name: "ListenButtons",
-  props: ["podcast"]
+  props: ["podcast"],
+  data: () => ({
+    domainName: window.location.host
+  })
 };
 </script>
 
