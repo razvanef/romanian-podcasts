@@ -144,6 +144,7 @@ export default {
             google_podcasts: podcast.googlePodcasts || "",
             soundcloud: podcast.soundcloud || "",
             overcast: podcast.overcast || "",
+            pocket_cast: podcast.pocketCast || "",
             breaker: podcast.breaker || "",
             castro: podcast.castro || ""
           };
@@ -155,6 +156,7 @@ export default {
             rss: podcast.rss,
             host,
             cover,
+            cover_original: cover,
             categories,
             ...social
           };
